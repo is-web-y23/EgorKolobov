@@ -2,7 +2,7 @@
   "name": "web-labs-2022",
   "version": "0.0.1",
   "description": "",
-  "author": "Egor Kolobov <286327@niuitmo.ru> (https://github.com/EgorKolobov)",
+  "author": "Egor Kolobov <286327@niuitmo.ru> (https://web-labs-2022.herokuapp.com/)",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
