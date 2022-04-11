@@ -1,0 +1,37 @@
+<main>
+  <h1>Регистрация</h1>
+  <div style="display:flex; flex-direction:row; justify-content:space-around">
+    <form id="my_form" onsubmit="return false">
+      <label for="days">День недели:</label>
+      <select id="days" name="days">
+        <option value="понедельник">понедельник</option>
+        <option value="вторник">вторник</option>
+        <option value="среда">среда</option>
+        <option value="четверг">четверг</option>
+        <option value="пятница">пятница</option>
+        <option value="суббота">суббота</option>
+        <option value="воскресенье">воскресенье</option>
+      </select>
+
+      <label for="lessons">Количество занятий в день:</label>
+      <input type="text" id="lessons" name="lessons" value="6"><br>
+
+      <input type="submit" value="Сгенерировать"><br>
+
+      <input type="button" value="Очистить" id="delete" onclick="del()"><br><br>
+    </form>
+    <form id="my_form2" onsubmit="return false" style="display: none">
+      <label for="subject">Предмет:</label>
+      <input type="text" id="subject" name="subject" value="Математика"><br>
+
+      <label for="number_lesson">Номер урока:</label>
+      <input type="text" id="number_lesson" name="number_lesson" value="1"><br>
+
+      <input type="submit" value="Добавить"><br>
+    </form>
+    <button id="btn_show_text" style="width: 150px; flex-wrap: wrap">Последние предметы</button>
+  </div>
+  <!-- Сюда генерируется таблица -->
+  <div class="nx3_table" id="result">
+  </div>
+</main>
