@@ -50,8 +50,7 @@ User: пользователь чата. Содержит:
     имя пользователя - name;
     роль пользователя в чате - role. Может быть USER(простой пользователь) или ADMIN(модератор чата);
     чат, в котором зарегестрирован пользователь - chat
-
-![](../../../../lab3Schema.png)
+![](lab3Schema.png)
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
