@@ -23,6 +23,35 @@
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
 ## Description
+Описание сущностей (лаба 3):
+
+Chat: обычный чат с пользователей. Содержит:
+
+    id чата;
+    список пользователей - users;
+    список сообщений чата - messages.
+
+Message: простое сообщение пользователя. Содержит:
+
+    id сообщения;
+    текст сообщения - content;
+    время создания сообщения - createdAt;
+    время исправления сообщения - updatedAt;
+    статус публикации сообщения - published;
+    заголовок сообщения - title;
+    автор сообщения - author;
+    чат сообщения - chat;
+
+User: пользователь чата. Содержит:
+
+    id пользователя;
+    врем создания пользователя - createdAt;
+    электронная почта пользователя - email;
+    имя пользователя - name;
+    роль пользователя в чате - role. Может быть USER(простой пользователь) или ADMIN(модератор чата);
+    чат, в котором зарегестрирован пользователь - chat
+
+![](../../../../lab3Schema.png)
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
