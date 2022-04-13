@@ -16,7 +16,6 @@ export class AppInterceptor implements NestInterceptor {
     }
     return next
       .handle()
-      .pipe(map(() => { return { username:"Egor", dataTime: Date.now() - now} } ));
-    // {...data, time}
+      .pipe(map((data) => { return {...data, dataTime: Date.now() - now} } ));
   }
 }
