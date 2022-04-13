@@ -1,5 +1,5 @@
 var before_loadtime = new Date().getTime();
-if($('body').is('.home_page')){
+if ($("body").is(".home_page")) {
     var btnContainer = document.getElementsByClassName("menu__nav");
 
     // Получаем все кнопки class="menu__navigation"
@@ -16,23 +16,36 @@ if($('body').is('.home_page')){
 }
 
 
-
-var loadTime = window.performance.timing.domContentLoadedEventEnd-window.performance.timing.navigationStart;
-var element = document.getElementsByClassName('footer_info')
+// var loadTime = window.performance.timing.domContentLoadedEventEnd-window.performance.timing.navigationStart;
+var element = document.getElementsByClassName("footer_info");
 var par = document.createElement("p"); // Создаём тег p
-var text = document.createTextNode('Load time: '+parseInt(loadTime/-10000000000)+' ms'); // Создаём текстовое поле для тега p
-par.appendChild(text)
-element[0].appendChild(par)
+// var text = document.createTextNode('Load time: '+parseInt(loadTime/-10000000000)+' ms'); // Создаём текстовое поле для тега p
+// par.appendChild(text)
+// element[0].appendChild(par)
 
 
 window.onload = Pageloadtime;
+
 function Pageloadtime() {
     var aftr_loadtime = new Date().getTime();
 
-    pgloadtime = (aftr_loadtime - before_loadtime) / 1000
+    pgloadtime = (aftr_loadtime - before_loadtime);
 
     par = document.createElement("p"); // Создаём тег p
-    text = document.createTextNode(' Load time: '+pgloadtime+' s'); // Создаём текстовое поле для тега p
-    par.appendChild(text)
-    element[0].appendChild(par)
+    text = document.createTextNode(" Load time client: " + pgloadtime + " ms"); // Создаём текстовое поле для тега p
+    par.appendChild(text);
+    element[0].appendChild(par);
 }
+
+let entrance = document.getElementById("my_button");
+entrance.addEventListener("click", function() {
+    event.preventDefault();
+    localStorage.setItem("entrance", "true");
+    document.location.reload()
+});
+
+let exit = document.getElementById("entrance");
+exit.addEventListener("click", function() {
+    localStorage.removeItem("entrance");
+    document.location.reload()
+});

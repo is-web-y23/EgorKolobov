@@ -1,37 +1,36 @@
 import { Get, Controller, Render, UseInterceptors } from "@nestjs/common";
-// import { APP_INTERCEPTOR } from "@nestjs/core";
-// import { AppInterceptor } from './app.interceptor';
+import { AppInterceptor } from "./app.interceptor";
 
 @Controller()
-// @UseInterceptors(new AppInterceptor())
+@UseInterceptors(AppInterceptor)
 export class AppController {
   @Get()
-  @Render('index')
+  @Render("index")
   root() {
-    return;
+    return { username: "Egor" };
   }
 
-  @Get('chat')
-  @Render('chat')
-  root2() {
-    return;
+  @Get("chat")
+  @Render("chat")
+  chat() {
+    return { username: "Egor" };
   }
 
-  @Get('table')
-  @Render('table')
-  root3() {
-    return;
+  @Get("table")
+  @Render("table")
+  table() {
+    return { username: "Egor" };
   }
 
-  @Get('table_form')
-  @Render('table_form')
-  root4() {
-    return;
+  @Get("table_form")
+  @Render("table_form")
+  table_form() {
+    return { username: "Egor" };
   }
 
-  @Get('register')
-  @Render('register')
-  root5() {
-    return;
+  @Get("register")
+  @Render("register.hbs")
+  register() {
+    return { username: 'Egor' };
   }
 }
