@@ -10,12 +10,13 @@ export class AppInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<Response> {
 
     const now = Date.now();
-    // let i=0;
-    // while(i<1_500_000_000){
-    //   i++
-    // }
+    let i=0;
+    while(i<1_500_000_000){
+      i++
+    }
     return next
       .handle()
-      .pipe(map(() => { return {dataTime: Date.now() - now} } ));
+      .pipe(map(() => { return { username:"Egor", dataTime: Date.now() - now} } ));
+    // {...data, time}
   }
 }

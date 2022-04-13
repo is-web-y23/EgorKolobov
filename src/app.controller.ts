@@ -1,8 +1,8 @@
 import { Get, Controller, Render, UseInterceptors } from "@nestjs/common";
 import { AppInterceptor } from "./app.interceptor";
 
-@Controller() // - чтобы логин работал
-// @UseInterceptors(AppInterceptor) // - чтобы работало время сервера
+@Controller()
+@UseInterceptors(AppInterceptor)
 export class AppController {
   @Get()
   @Render("index")
