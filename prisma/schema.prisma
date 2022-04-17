@@ -27,8 +27,9 @@ model Message {
   published Boolean   @default(false)
   title     String?   @db.VarChar(255)
   author    User      @relation(fields: [authorId], references: [id])
-  chat      Chat[]
+  chat      Chat      @relation(fields: [chatId], references: [id])
   authorId  Int
+  chatId    Int
 }
 
 enum Role {
@@ -42,7 +43,6 @@ model User {
   email     String    @unique
   name      String?
   role      Role      @default(USER)
-  chat      Chat?     @relation(fields: [chatId], references: [id])
-  chatId    Int?
+  chat      Chat[]
   Message   Message[]
 }
