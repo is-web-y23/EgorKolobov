@@ -1,5 +1,15 @@
 import { Get, Controller, Render, UseInterceptors } from "@nestjs/common";
 import { AppInterceptor } from "./app.interceptor";
+import {
+  Param,
+  Post,
+  Body,
+  Put,
+  Delete,
+} from '@nestjs/common';
+import { UserService } from './user.service';
+import { User as UserModel } from '@prisma/client';
+
 
 @Controller()
 @UseInterceptors(AppInterceptor)
@@ -34,3 +44,4 @@ export class AppController {
     return { username: 'Egor' };
   }
 }
+
