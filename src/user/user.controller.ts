@@ -1,14 +1,15 @@
 import { Controller, Delete, Get, Param, Post } from '@nestjs/common';
-import { ApiOperation, ApiResponse } from '@nestjs/swagger'
+import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { User } from '@prisma/client'
 import { UserService } from './user.service'
 
 
 @ApiResponse({
-  status: 355,
+  status: 501,
   description: 'Not implemented',
 })
 
+@ApiTags('User')
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
@@ -26,7 +27,7 @@ export class UserController {
   async createUser(email: string, name: string): Promise<User> {
     return await this.userService.create(email, name);
   }
-  @Delete(':user/delete')
+  @Delete(':user')
   async deleteUser(@Param('user') id: number, name: string): Promise<User> {
     return await this.userService.delete(id, name);
   }
