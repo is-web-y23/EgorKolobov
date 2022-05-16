@@ -6,10 +6,24 @@ import { UserService } from "./user/user.service";
 import { ChatService } from "./chat/chat.service";
 import { ChatModule } from './chat/chat.module';
 import { MessageModule } from './message/message.module';
+import { MessageService } from './message/message.service';
+import { PrismaService } from "./prisma.service";
+import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from "@nestjs/config";
 
 @Module({
-  imports: [UserModule, ChatModule, MessageModule],
+  imports: [UserModule, ChatModule, MessageModule, ConfigModule.forRoot(), AuthModule.forRoot({
+    connectionURI: process.env.ConnectionURI,
+    apiKey: process.env.apiKey,
+    appInfo: {
+      appName: "web-labs-2022",
+      apiDomain: "http://localhost:80/",
+      websiteDomain: "http://localhost:80/",
+      apiBasePath: "/auth",
+      websiteBasePath: "/auth"
+    },
+  })],
   controllers: [AppController],
-  providers: [AppService, UserService, ChatService],
+  providers: [AppService, MessageService, UserService, ChatService, PrismaService],
 })
 export class AppModule {}

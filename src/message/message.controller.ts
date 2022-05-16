@@ -1,34 +1,68 @@
-import { Controller, Delete, Get, Param, Post } from '@nestjs/common';
-import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
-import { Message } from '@prisma/client'
-import { MessageService } from './message.service'
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, UseGuards } from "@nestjs/common";
+import { ApiBasicAuth, ApiBody, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
+import {  Message } from "@prisma/client";
+import { MessageService } from "./message.service";
+import { MessageDto } from "../message/dto/message-dto";
+import { AuthGuard } from "../auth/auth.guard";
+import { Session } from "../auth/session.decorator";
+import { SessionContainer } from "supertokens-node/lib/build/recipe/session/faunadb";
 
 
 @ApiResponse({
   status: 501,
-  description: 'Not implemented',
+  description: "Not implemented"
 })
 
-@ApiTags('Message')
-@Controller('message')
+@ApiTags("Message")
+@Controller("message")
 export class MessageController {
-  constructor(private readonly messageService: MessageService) {}
-
+  constructor(private readonly messageService: MessageService) {
+  }
 
   @ApiOperation({
-    summary: 'Find message',
+    summary: "Create message"
   })
-  @Get(':message')
-  async getMessage(@Param('message') id: number, name: string):
+  @ApiBody({
+    type: MessageDto
+  })
+  @Post("create")
+  async createMessage(@Body() CreateMessageDto: MessageDto): Promise<Message> {
+    return await this.messageService.create(CreateMessageDto);
+  }
+
+  @ApiOperation({
+    summary: 'Read message',
+  })
+  @ApiResponse({
+    status: 401,
+    description: "You're not authorized to access this resource",
+  })
+  @ApiBasicAuth()
+  @Get(":id")
+  @UseGuards(AuthGuard)
+  async getMessage(@Param("id") id: number, @Session() session: SessionContainer):
     Promise<Message> {
-    return await this.messageService.find(id, name);
+    const userId = session.getUserId();
+    console.log(userId);
+    return await this.messageService.find(id);
   }
-  @Post('create')
-  async createMessage(email: string, name: string): Promise<Message> {
-    return await this.messageService.create(email, name);
+
+  @ApiOperation({
+    summary: "Update Message"
+  })
+  @Post(":id/update")
+  async updateMessage(@Param("id", ParseIntPipe) id: number,
+                   @Body() MessageDto: MessageDto):
+    Promise<Message> {
+    return await this.messageService.update(id, MessageDto);
   }
-  @Delete(':message')
-  async deleteMessage(@Param('message') id: number, name: string): Promise<Message> {
-    return await this.messageService.delete(id, name);
+
+  @ApiOperation({
+    summary: "Delete message"
+  })
+  @Delete(":id")
+  async deleteMessage(@Param("id") id: number):
+    Promise<void> {
+    return await this.messageService.delete(id);
   }
 }
