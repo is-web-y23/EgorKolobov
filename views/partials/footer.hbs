@@ -1,0 +1,26 @@
+<footer>
+  <div class="footer_info" id="footer_info_id">
+    <section class="footer_info__contacts contacts" id="contacts_id">
+      <h2>Контактная информация</h2>
+      <ul>
+        <li>Телефон: 555-1488</li>
+        <li>Почта:ekolobov@gmail.com</li>
+      </ul>
+    </section>
+    <div>
+      Load time server: {{dataTime}} ms
+    </div>
+  </div>
+  <div class="footer_info1">
+    <script>
+      (() => {
+          if (localStorage.getItem("entrance") != null) { //localStorage.getItem("entrance") === "true"
+            document.getElementsByClassName("footer_info1")[0].innerHTML = '{{username}}';
+          } else {
+            document.getElementsByClassName("footer_info1")[0].innerHTML = "Unknown";
+          }
+        }
+      )();
+    </script>
+  </div>
+</footer>
