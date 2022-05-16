@@ -16,8 +16,7 @@ if ($("body").is(".home_page")) {
 }
 
 var element = document.getElementsByClassName("footer_info");
-var par = document.createElement("p");
-
+var par = document.createElement("p"); // Создаём тег p
 
 window.onload = Pageloadtime;
 
