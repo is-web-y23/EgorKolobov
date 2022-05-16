@@ -15,14 +15,8 @@ if ($("body").is(".home_page")) {
   }
 }
 
-
-// var loadTime = window.performance.timing.domContentLoadedEventEnd-window.performance.timing.navigationStart;
 var element = document.getElementsByClassName("footer_info");
 var par = document.createElement("p"); // Создаём тег p
-// var text = document.createTextNode('Load time: '+parseInt(loadTime/-10000000000)+' ms'); // Создаём текстовое поле для тега p
-// par.appendChild(text)
-// element[0].appendChild(par)
-
 
 window.onload = Pageloadtime;
 
@@ -41,11 +35,11 @@ let entrance = document.getElementById("my_button");
 entrance.addEventListener("click", function() {
   event.preventDefault();
   localStorage.setItem("entrance", "true");
-  document.location.reload()
+  document.location.reload();
 });
 
 let exit = document.getElementById("entrance");
 exit.addEventListener("click", function() {
   localStorage.removeItem("entrance");
-  document.location.reload()
+  document.location.reload();
 });

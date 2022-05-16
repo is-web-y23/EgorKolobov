@@ -12,19 +12,19 @@ export class AppController {
 
   @Get("chat")
   @Render("chat")
-  root2() {
+  chat() {
     return { username: "Egor" };
   }
 
   @Get("table")
   @Render("table")
-  root3() {
+  table() {
     return { username: "Egor" };
   }
 
   @Get("table_form")
   @Render("table_form")
-  root4() {
+  table_form() {
     return { username: "Egor" };
   }
 

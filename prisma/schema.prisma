@@ -14,19 +14,20 @@ datasource db {
 
 model Chat {
   id       Int       @id @default(autoincrement())
+  name     String
   users    User[]
   messages Message[]
 }
 
 model Message {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   content   String[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  published Boolean  @default(false)
-  title     String?  @db.VarChar(255)
-  author    User     @relation(fields: [authorId], references: [id])
-  chat      Chat     @relation(fields: [chatId], references: [id])
+  createdAt DateTime  @default(now())
+  updatedAt DateTime?
+  published Boolean   @default(false)
+  title     String?   @db.VarChar(255)
+  author    User      @relation(fields: [authorId], references: [id])
+  chat      Chat      @relation(fields: [chatId], references: [id])
   authorId  Int
   chatId    Int
 }
@@ -42,7 +43,6 @@ model User {
   email     String    @unique
   name      String?
   role      Role      @default(USER)
-  Chat      Chat?     @relation(fields: [chatId], references: [id])
-  chatId    Int?
+  chat      Chat[]
   Message   Message[]
 }
