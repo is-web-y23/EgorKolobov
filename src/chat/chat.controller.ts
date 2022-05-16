@@ -1,34 +1,57 @@
-import { Controller, Delete, Get, Param, Post } from '@nestjs/common';
-import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
-import { Chat } from '@prisma/client'
-import { ChatService } from './chat.service'
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post } from "@nestjs/common";
+import { ApiBody, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
+import { Chat } from "@prisma/client";
+import { ChatService } from "./chat.service";
+import { ChatDto } from "../chat/dto/chat-dto";
 
 
 @ApiResponse({
   status: 501,
-  description: 'Not implemented',
+  description: "Not implemented"
 })
 
-@ApiTags('Chat')
-@Controller('chat')
+@ApiTags("Chat")
+@Controller("chat")
 export class ChatController {
-  constructor(private readonly chatService: ChatService) {}
-
+  constructor(private readonly chatService: ChatService) {
+  }
 
   @ApiOperation({
-    summary: 'Find chat',
+    summary: "Create chat"
   })
-  @Get(':chat')
-  async getChat(@Param('chat') id: number, name: string):
+  @ApiBody({
+    type: ChatDto
+  })
+  @Post("create")
+  async createChat(@Body() CreateChatDto: ChatDto): Promise<Chat> {
+    return await this.chatService.create(CreateChatDto);
+  }
+
+  @ApiOperation({
+    summary: "Read chat"
+  })
+  @Get(":id")
+  async getChat(@Param("id") id: number):
     Promise<Chat> {
-    return await this.chatService.find(id, name);
+    return await this.chatService.find(id);
   }
-  @Post('create')
-  async createChat(email: string, name: string): Promise<Chat> {
-    return await this.chatService.create(email, name);
+
+  @ApiOperation({
+    summary: "Update chat"
+  })
+  @Post(":id/update")
+  async updateChat(@Param("id", ParseIntPipe) id: number,
+                   @Body() ChatDto: ChatDto):
+    Promise<Chat> {
+    return await this.chatService.update(id, ChatDto);
   }
-  @Delete(':chat')
-  async deleteChat(@Param('chat') id: number, name: string): Promise<Chat> {
-    return await this.chatService.delete(id, name);
+
+  @ApiOperation({
+    summary: "Delete chat"
+  })
+  @Delete(":id")
+  async deleteChat(@Param("id") id: number):
+    Promise<void> {
+    return await this.chatService.delete(id);
   }
 }

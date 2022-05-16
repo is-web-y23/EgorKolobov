@@ -1,34 +1,56 @@
-import { Controller, Delete, Get, Param, Post } from '@nestjs/common';
-import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
-import { User } from '@prisma/client'
-import { UserService } from './user.service'
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post } from "@nestjs/common";
+import { ApiBody, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
+import { User } from "@prisma/client";
+import { UserService } from "./user.service";
+import { UserDto } from "./dto/user-dto";
 
 
 @ApiResponse({
   status: 501,
-  description: 'Not implemented',
+  description: "Not implemented"
 })
-
-@ApiTags('User')
-@Controller('user')
+@ApiTags("User")
+@Controller("user")
 export class UserController {
-  constructor(private readonly userService: UserService) {}
-
+  constructor(private readonly userService: UserService) {
+  }
 
   @ApiOperation({
-    summary: 'Find user',
+    summary: "Create user"
   })
-  @Get(':user')
-  async getUser(@Param('user') id: number, name: string):
+  @ApiBody({
+    type: UserDto
+  })
+  @Post("create")
+  async createUser(@Body() CreateUserDto: UserDto): Promise<User> {
+    return await this.userService.create(CreateUserDto);
+  }
+
+  @ApiOperation({
+    summary: "Read user"
+  })
+  @Get(":id")
+  async getUser(@Param("id") id: number):
     Promise<User> {
-    return await this.userService.find(id, name);
+    return await this.userService.find(id);
   }
-  @Post('create')
-  async createUser(email: string, name: string): Promise<User> {
-    return await this.userService.create(email, name);
+
+  @ApiOperation({
+    summary: "Update user"
+  })
+  @Post(":id/update")
+  async updateUser(@Param("id", ParseIntPipe) id: number,
+                   @Body() UserDto: UserDto):
+    Promise<User> {
+    return await this.userService.update(id, UserDto);
   }
-  @Delete(':user')
-  async deleteUser(@Param('user') id: number, name: string): Promise<User> {
-    return await this.userService.delete(id, name);
+
+  @ApiOperation({
+    summary: "Delete user"
+  })
+  @Delete(":id")
+  async deleteUser(@Param("id") id: number):
+    Promise<void> {
+    return await this.userService.delete(id);
   }
 }
