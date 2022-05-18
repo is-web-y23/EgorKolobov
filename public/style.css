@@ -1,11 +1,11 @@
-html{
+html {
     width: 100%;
     background-color: #E7E9DE;
     font-family: "Helvetica Neue";
     line-height: normal;
 }
 
-header{
+header {
     position: fixed;
     width: 100%;
     top: 0px;
@@ -13,13 +13,13 @@ header{
     background-color: #E7E9DE;
 }
 
-h1{
+h1 {
     color: darkblue;
     font-size: 30px;
     font-weight: normal;
 }
 
-.h1_cv{
+.h1_cv {
     color: #E0584E;
     text-align: center;
     vertical-align: center;
@@ -27,25 +27,25 @@ h1{
     margin-top: 0px;
 }
 
-h2{
+h2 {
     color: #E0584E;
     font-size: 19px;
     margin: 0px 0px 0px 0px;
 }
 
-h3{
+h3 {
     color: #E454FA;
     font-size: 14px;
     margin: 0px 0px 0px 0px;
 }
 
-h4{
+h4 {
     color: #01A6F0;
     /*font-size: 18px;*/
     margin: 0px 0px 0px 0px;
 }
 
-aside{
+aside {
     padding: 10px;
     margin-bottom: 20px;
     box-shadow: 0 0 5px;
@@ -57,13 +57,13 @@ img {
     margin-bottom: 10px;
 }
 
-section{
+section {
     padding: 10px 5px;
     margin-bottom: 20px;
     box-shadow: 0 0 5px;
 }
 
-nav{
+nav {
     display: flex;
     flex-direction: row;
     /* justify-content: space-around; */
@@ -72,11 +72,12 @@ nav{
     /*flex-direction: column;*/
 }
 
-.chat_p{
+.chat_p {
     /*border-block: 3px dashed #E0584E;*/
     /*writing-mode: horizontal-tb;*/
     background-color: azure
 }
+
 /*a{*/
 /*    text-decoration: none;*/
 /*}*/
@@ -95,13 +96,13 @@ nav{
 /*    width: 100%;*/
 /*}*/
 
-footer{
+footer {
     position: relative;
     width: 100%;
     bottom: 0px;
 }
 
-.menu{
+.menu {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -109,15 +110,15 @@ footer{
     margin-bottom: 0px;
 }
 
-.anchor{
-    display:block;
-    height:175px;
-    margin-top:-175px;
-    visibility:hidden;
+.anchor {
+    display: block;
+    height: 175px;
+    margin-top: -175px;
+    visibility: hidden;
 }
 
 
-.menu__navigation{
+.menu__navigation {
     text-align: center;
     margin: 5px 5px 5px 5px;
     box-shadow: 0 0 5px;
@@ -128,33 +129,33 @@ footer{
     flex: 1 1 25%
 }
 
-.navigation{
+.navigation {
     color: black;
     text-decoration: none;
 }
 
-.menu__navigation:hover{
+.menu__navigation:hover {
     font-weight: 800;
 }
 
-.active{
+.active {
     font-weight: 800;
     text-decoration: underline;
 }
 
-.all_content{
+.all_content {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.menu__nav{
+.menu__nav {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
 }
 
-.all_content__useful{
+.all_content__useful {
     width: 71%;
     margin-right: 10px;
     font-size: 12px;
@@ -188,59 +189,67 @@ footer{
     background: lightgray;
 }
 
-.all_content__pictures{
+.all_content__pictures {
     width: 29%;
     height: 100%;
     /*background-color: cyan;*/
     max-width: 200px;
 }
 
-.all_content__useful{
+.all_content__useful {
     grid-template-rows: 1fr 1fr;
 }
 
-.my_image{
+.my_image {
     padding-top: 10px;
 }
 
-.menu__nav{
+.menu__nav {
     display: flex;
     flex-wrap: wrap;
     /*flex-direction: row;*/
 }
 
-@media screen and (min-width: 640px){
+@media screen and (min-width: 640px) {
     /*.menu__nav{*/
     /*    display: flex;*/
     /*    flex-wrap: wrap;*/
     /*    flex-direction: row;*/
     /*}*/
-    .all_content__pictures{
+    .all_content__pictures {
         max-width: 300px;
         /*background-color: darkblue;*/
     }
-    .all_content__useful{
+
+    .all_content__useful {
         font-size: 12px;
     }
-    h1{
+
+    h1 {
         font-size: 30px;
     }
-    h2{
+
+    h2 {
         font-size: 19px;
     }
-    h3{
+
+    h3 {
         font-size: 14px;
     }
-    .navigation{
+
+    .navigation {
         font-size: 12px;
     }
-    nav{
+
+    nav {
         /*flex-direction: column;*/
         flex-direction: row;
     }
-    .menu__navigation{
+
+    .menu__navigation {
         flex: 1 1 20%
     }
+
     /*.menu__div_nav1{*/
     /*    width: 100%;*/
     /*}*/
@@ -249,33 +258,41 @@ footer{
     /*}*/
 }
 
-@media screen and (min-width: 992px){
-    .all_content__pictures{
+@media screen and (min-width: 992px) {
+    .all_content__pictures {
         max-width: 400px;
         /*background-color: red;*/
     }
-    .all_content__useful{
+
+    .all_content__useful {
         font-size: 16px;
     }
-    h1{
+
+    h1 {
         font-size: 35px;
     }
-    h2{
+
+    h2 {
         font-size: 23px;
     }
-    h3{
+
+    h3 {
         font-size: 18px;
     }
-    .navigation{
+
+    .navigation {
         font-size: 14px;
     }
-    nav{
+
+    nav {
         /*flex-direction: column;*/
         /* flex-direction: row; */
     }
-    .menu__navigation{
+
+    .menu__navigation {
         flex: 1 1 10%
     }
+
     /*.menu__nav{*/
     /*    display: flex;*/
     /*    flex-wrap: wrap;*/
@@ -289,34 +306,42 @@ footer{
     /*}*/
 }
 
-@media screen and (min-width: 1200px){
-    .menu__navigation{
+@media screen and (min-width: 1200px) {
+    .menu__navigation {
         flex: 1 1 10%
     }
-    .all_content__pictures{
+
+    .all_content__pictures {
         max-width: 500px;
         /*background-color: yellow;*/
     }
-    .all_content__useful{
+
+    .all_content__useful {
         font-size: 18px;
     }
-    h1{
+
+    h1 {
         font-size: 40px;
     }
-    h2{
+
+    h2 {
         font-size: 25px;
     }
-    h3{
+
+    h3 {
         font-size: 20px;
     }
-    .navigation{
+
+    .navigation {
         font-size: 16px;
     }
-    nav{
+
+    nav {
         /*flex-wrap: wrap;*/
         /*flex-direction: column;*/
         /* flex-direction: row; */
     }
+
     /*.menu__nav{*/
     /*    display: flex;*/
     /*    flex-wrap: wrap;*/
@@ -330,25 +355,16 @@ footer{
     /*}*/
 }
 
-.footer_info__contacts{
+.footer_info__contacts {
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 10px;
     margin-bottom: 20px;
 }
 
-/*#education_id{*/
-/*    !*display: block;*!*/
-/*    !*position: relative;*!*/
-/*    !*top: -250px;*!*/
-/*    !*visibility: hidden;*!*/
-/*    */
-/*    !*padding-top: 209px;*!*/
-/*    !*margin-top: -219px;*!*/
-/*}*/
 
 /*для 6 лабы */
-.my_button:hover{
+.my_button:hover {
     font-weight: 700;
 }
 

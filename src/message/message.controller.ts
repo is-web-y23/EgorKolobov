@@ -7,7 +7,6 @@ import { AuthGuard } from "../auth/auth.guard";
 import { Session } from "../auth/session.decorator";
 import { SessionContainer } from "supertokens-node/lib/build/recipe/session/faunadb";
 
-
 @ApiResponse({
   status: 501,
   description: "Not implemented"

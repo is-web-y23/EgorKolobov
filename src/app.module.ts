@@ -10,6 +10,7 @@ import { MessageService } from './message/message.service';
 import { PrismaService } from "./prisma.service";
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from "@nestjs/config";
+import { AppGateway } from './app.gateway';
 
 @Module({
   imports: [UserModule, ChatModule, MessageModule, ConfigModule.forRoot(), AuthModule.forRoot({
@@ -24,6 +25,6 @@ import { ConfigModule } from "@nestjs/config";
     },
   })],
   controllers: [AppController],
-  providers: [AppService, MessageService, UserService, ChatService, PrismaService],
+  providers: [AppService, MessageService, UserService, ChatService, PrismaService, AppGateway],
 })
 export class AppModule {}

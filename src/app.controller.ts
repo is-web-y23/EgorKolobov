@@ -21,6 +21,13 @@ export class AppController {
   }
 
   @ApiExcludeEndpoint(true)
+  @Get("lab7chat")
+  @Render("lab7chat")
+  lab7chat() {
+    return {};
+  }
+
+  @ApiExcludeEndpoint(true)
   @Get("table")
   @Render("table")
   table() {

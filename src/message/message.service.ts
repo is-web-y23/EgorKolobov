@@ -1,8 +1,7 @@
-import { HttpException, Injectable, NotFoundException, NotImplementedException } from "@nestjs/common";
-import { Chat, Message } from "@prisma/client";
+import { HttpException, Injectable, NotFoundException } from "@nestjs/common";
+import { Message } from "@prisma/client";
 import { PrismaService } from "../prisma.service";
 import { MessageDto } from "./dto/message-dto";
-import { ChatDto } from "../chat/dto/chat-dto";
 
 @Injectable()
 export class MessageService {
@@ -11,7 +10,6 @@ export class MessageService {
 
   async create(CreateMessageDto: MessageDto): Promise<Message> {
     return await this.prisma.message.create({
-      // data: { authorId: authorId, chatId: chatId, title: CreateMessageDto.title, content: CreateMessageDto.content }
       data: CreateMessageDto
     });
   }

@@ -10,6 +10,7 @@ import { SupertokensExceptionFilter } from './auth/auth.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  app.useStaticAssets(join(__dirname, '..', 'static'));
   const hbs = require("hbs");
   app.useStaticAssets(join(__dirname, "..", "public"));
   app.setBaseViewsDir(join(__dirname, "..", "views"));
